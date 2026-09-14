@@ -50,34 +50,86 @@ button, input, select, textarea { font: inherit; }
 header {
   position: relative;
   width: 100%;
-  z-index: 100;
-  padding: 18px 0;
+  z-index: 1000;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
-.nav { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
-.brand { display: flex; align-items: center; text-decoration: none; justify-content: center; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.brand { display: flex; align-items: center; text-decoration: none; }
 .brand img { 
-  height: 70px; 
+  height: 55px; 
   width: auto; 
-  max-width: 280px;
+  max-width: 220px;
   object-fit: contain; 
   display: block; 
 }
 
-/* LINKS DE NAVEGACIÓN VISIBLES EN MÓVIL Y PC */
-.links { display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+/* NAVEGACIÓN PC Y MÓVIL CON MENÚ HAMBURGUESA */
+.links { display: none; gap: 24px; align-items: center; font-size: 14px; color: var(--muted); }
 .links a:hover { color: var(--gold-light); }
 
-.header-cta { display: flex; width: 100%; justify-content: center; }
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+.menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background: var(--gold-light);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Menú móvil desplegable */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(18, 16, 14, 0.98);
+  border-bottom: 1px solid var(--line);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+  transform: translateY(-120%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+.mobile-menu.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.mobile-menu a {
+  font-size: 16px;
+  color: var(--text);
+  font-weight: 600;
+  padding: 8px 0;
+}
+.mobile-menu a:hover { color: var(--gold-light); }
+
+.header-right { display: flex; align-items: center; gap: 12px; }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 9px;
-  min-height: 48px;
-  padding: 0 22px;
+  min-height: 44px;
+  padding: 0 18px;
   border: 1px solid transparent;
   border-radius: 999px;
   font-weight: 700;
@@ -89,9 +141,9 @@ header {
 .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
 .btn-primary { background: linear-gradient(135deg, #B89753, #D4B26F); box-shadow: 0 10px 30px rgba(197,160,89,.2); color: #12100E; font-weight: 800; }
 .btn-secondary { border-color: var(--line); background: rgba(255,255,255,.03); color: var(--text); }
-.btn-small { min-height: 38px; padding: 0 16px; font-size: 12px; }
+.btn-small { min-height: 38px; padding: 0 14px; font-size: 12px; }
 
-.hero { padding: 40px 0 60px; }
+.hero { padding: 60px 0; }
 .hero-grid { display: grid; gap: 40px; align-items: center; }
 .badge {
   display: inline-flex;
@@ -213,9 +265,8 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
 .reveal.show { opacity: 1; transform: none; }
 
 @media(min-width: 680px) {
-  .nav { flex-direction: row; justify-content: space-between; }
-  .links { display: flex; gap: 22px; font-size: 14px; }
-  .header-cta { width: auto; }
+  .menu-toggle { display: none; }
+  .links { display: flex; }
   .actions { flex-direction: row; }
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
   .grid3 { grid-template-columns: repeat(3, 1fr); }
@@ -230,7 +281,7 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
   .location { grid-template-columns: 1fr 1fr; }
 }
 @media(max-width: 768px) {
-  .brand img { height: 60px; }
+  .brand img { height: 46px; max-width: 170px; }
   .footer-logo { height: 60px; }
 }
 @media(prefers-reduced-motion: reduce) {
@@ -243,8 +294,32 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
 <header>
  <div class="container nav">
   <a class="brand" href="#"><img src="lododraalejandra.png" alt="Dra. Alejandra Zapata"></a>
-  <nav class="links" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#resultados">Resultados</a><a href="#ciudades">Ciudades</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a></nav>
-  <div class="header-cta"><a class="btn btn-primary btn-small wa" href="#" data-msg="Hola Dra. Alejandra, quiero agendar una valoración para armonización de orejas.">Agendar cita</a></div>
+  
+  <nav class="links" aria-label="Navegación principal">
+    <a href="#servicios">Servicios</a>
+    <a href="#resultados">Resultados</a>
+    <a href="#ciudades">Ciudades</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <div class="header-right">
+    <a class="btn btn-primary btn-small wa" href="#" data-msg="Hola Dra. Alejandra, quiero agendar una valoración para armonización de orejas.">Agendar cita</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+ </div>
+
+ <!-- Menú desplegable móvil -->
+ <div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#resultados" class="mobile-link">Resultados</a>
+  <a href="#ciudades" class="mobile-link">Ciudades</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#contacto" class="mobile-link">Contacto</a>
  </div>
 </header>
 
@@ -400,6 +475,19 @@ function openWhatsApp(message){
  window.open(`${base}?text=${encodeURIComponent(message)}`,"_blank","noopener,noreferrer");
 }
 document.querySelectorAll(".wa").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();openWhatsApp(el.dataset.msg||"Hola, quiero más información.");}));
+
+// Script para el menú hamburguesa móvil
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+menuToggle.addEventListener("click", () => {
+  mobileMenu.classList.toggle("active");
+});
+document.querySelectorAll(".mobile-link").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+  });
+});
+
 const objetivo=document.getElementById("objetivo"),momento=document.getElementById("momento"),detalle=document.getElementById("detalle"),preview=document.getElementById("preview");
 function buildMsg(){
  let m=`Hola Dra. Alejandra, quiero solicitar una valoración para armonización de orejas.\n\nMi objetivo: ${objetivo.value}.\nMomento: ${momento.value}.`;

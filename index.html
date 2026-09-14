@@ -180,8 +180,9 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 .cta-box h2 { font-size: clamp(26px, 4.5vw, 44px); line-height: 1.2; }
 .cta-box p { color: var(--muted); max-width: 580px; margin: 16px auto 24px auto; }
 
-footer { border-top: 1px solid var(--line); padding: 28px 0 80px; color: var(--muted); font-size: 12px; text-align: center; }
-.footer-grid { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+footer { border-top: 1px solid var(--line); padding: 28px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
+.footer-content { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; }
+.footer-brand { color: var(--text); font-weight: 600; }
 
 .float-wa {
   position: fixed;
@@ -214,7 +215,6 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 80px; color: var(--m
   .gallery { grid-template-columns: repeat(3, 1fr); }
   .form-grid { grid-template-columns: 1fr 1fr; }
   .field.full { grid-column: 1 / -1; }
-  .footer-grid { flex-direction: row; justify-content: space-between; }
 }
 @media(min-width: 920px) {
   .links { display: flex; }
@@ -360,7 +360,12 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 80px; color: var(--m
 </div>
 </main>
 
-<footer><div class="container footer-grid"><div>© <span id="year"></span> Dra. Alejandra Zapata. Todos los derechos reservados.</div><div>Información médica orientativa · La valoración profesional es individual.</div></div></footer>
+<footer>
+  <div class="container footer-content">
+    <div>Diseñado con 🔥 potencia <strong>Angélica Digital</strong></div>
+    <div>© <span id="year"></span> Dra. Alejandra Zapata. Todos los derechos reservados.</div>
+  </div>
+</footer>
 <a class="float-wa wa" href="#" aria-label="WhatsApp" data-msg="Hola Dra. Alejandra, quiero información sobre armonización de orejas."><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
@@ -378,7 +383,7 @@ function buildMsg(){
  preview.textContent=m;return m;
 }
 [objetivo,momento,detalle].forEach(x=>x.addEventListener("input",buildMsg));buildMsg();
-document.getElementById("quoteBtn").expanded=document.getElementById("quoteBtn").addEventListener("click",()=>openWhatsApp(buildMsg()));
+document.getElementById("quoteBtn").addEventListener("click",()=>openWhatsApp(buildMsg()));
 document.querySelectorAll(".faq-q").forEach(q=>q.addEventListener("click",()=>q.parentElement.classList.toggle("open")));
 document.getElementById("year").textContent=new Date().getFullYear();
 const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); } }), { threshold: .12 });

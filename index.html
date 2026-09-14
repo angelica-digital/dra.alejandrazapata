@@ -51,15 +51,22 @@ header {
   position: relative;
   width: 100%;
   z-index: 100;
-  padding: 18px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; min-width: 0; }
-.brand img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 1px solid var(--gold); flex-shrink: 0; }
-.brand span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.brand small { display: block; color: var(--nude); font-size: 11px; font-weight: 600; }
+.brand { display: flex; align-items: center; text-decoration: none; }
+.brand img { 
+  height: 60px; 
+  width: auto; 
+  max-width: 220px;
+  object-fit: contain; 
+  display: block; 
+  transition: transform 0.3s ease;
+}
+.brand img:hover { transform: scale(1.02); }
+
 .links { display: none; gap: 26px; align-items: center; font-size: 14px; color: var(--muted); }
 .links a:hover { color: var(--gold-light); }
 
@@ -217,7 +224,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 80px; color: var(--m
   .location { grid-template-columns: 1fr 1fr; }
 }
 @media(max-width: 768px) {
-  .brand img { width: 44px; height: 44px; }
+  .brand img { height: 48px; }
 }
 @media(prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
@@ -228,7 +235,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 80px; color: var(--m
 <body>
 <header>
  <div class="container nav">
-  <a class="brand" href="#"><img src="lododraalejandra.png" alt="Dra. Alejandra Zapata"><span>Dra. Alejandra Zapata<small>Armonización de orejas</small></span></a>
+  <a class="brand" href="#"><img src="lododraalejandra.png" alt="Dra. Alejandra Zapata"></a>
   <nav class="links" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#resultados">Resultados</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a></nav>
   <a class="btn btn-primary btn-small wa" href="#" data-msg="Hola Dra. Alejandra, quiero agendar una valoración para armonización de orejas.">Agendar cita</a>
  </div>

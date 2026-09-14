@@ -168,8 +168,10 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 .faq-item.open .faq-a { max-height: 220px; }
 .faq-item.open .faq-q i { transform: rotate(45deg); }
 
-.cities-grid { display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: 850px; margin: 30px auto 0 auto; }
-.city-btn { padding: 18px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); text-align: center; font-weight: 700; color: var(--gold-light); cursor: pointer; transition: .3s; display: block; width: 100%; }
+/* BOTONES DE CIUDADES CON ÍCONO DE WHATSAPP */
+.cities-grid { display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 850px; margin: 30px auto 0 auto; }
+.city-btn { padding: 18px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); text-align: center; font-weight: 700; color: var(--gold-light); cursor: pointer; transition: .3s; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; }
+.city-btn i { color: #25D366; font-size: 18px; }
 .city-btn:hover { border-color: var(--gold); transform: translateY(-3px); background: var(--card2); filter: brightness(1.1); }
 
 .location { display: grid; gap: 20px; text-align: left; }
@@ -182,9 +184,10 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 .cta-box h2 { font-size: clamp(26px, 4.5vw, 44px); line-height: 1.2; }
 .cta-box p { color: var(--muted); max-width: 580px; margin: 16px auto 24px auto; }
 
-footer { border-top: 1px solid var(--line); padding: 32px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
-.footer-content { display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; }
-.footer-logo { height: 45px; width: auto; object-fit: contain; margin-bottom: 2px; }
+/* RODAPÉ CON LOGO MÁS GRANDE */
+footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
+.footer-content { display: flex; flex-direction: column; gap: 14px; align-items: center; justify-content: center; }
+.footer-logo { height: 75px; width: auto; object-fit: contain; margin-bottom: 4px; }
 
 .float-wa {
   position: fixed;
@@ -227,6 +230,7 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 60px; color: var(--m
 }
 @media(max-width: 768px) {
   .brand img { height: 75px; max-width: 240px; }
+  .footer-logo { height: 60px; }
 }
 @media(prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
@@ -325,15 +329,15 @@ footer { border-top: 1px solid var(--line); padding: 32px 0 60px; color: var(--m
   <div class="section-header-center">
    <div class="eyebrow">Cobertura nacional</div>
    <h2 class="section-title reveal">Ciudades de <span class="grad">Atención Presencial.</span></h2>
-   <p class="section-copy reveal">Selecciona tu ciudad para agendar tu valoración directamente con el mensaje preconfigurado:</p>
+   <p class="section-copy reveal">Selecciona tu ciudad para agendar tu valoración directamente con el mensaje preconfigurado en WhatsApp:</p>
   </div>
   <div class="cities-grid reveal">
-   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Palmira.">Palmira</button>
-   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Cali.">Cali</button>
-   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Pereira.">Pereira</button>
-   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Bogotá.">Bogotá</button>
-   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Medellín.">Medellín</button>
-   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Bucaramanga.">Bucaramanga</button>
+   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Palmira."><i class="fa-brands fa-whatsapp"></i> Palmira</button>
+   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Cali."><i class="fa-brands fa-whatsapp"></i> Cali</button>
+   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Pereira."><i class="fa-brands fa-whatsapp"></i> Pereira</button>
+   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Bogotá."><i class="fa-brands fa-whatsapp"></i> Bogotá</button>
+   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Medellín."><i class="fa-brands fa-whatsapp"></i> Medellín</button>
+   <button class="city-btn wa" data-msg="Hola Dra. Alejandra, vi su página y quiero agendar mi valoración en Bucaramanga."><i class="fa-brands fa-whatsapp"></i> Bucaramanga</button>
   </div>
  </div>
 </section>
@@ -407,7 +411,7 @@ document.getElementById("quoteBtn").addEventListener("click",()=>openWhatsApp(bu
 document.querySelectorAll(".faq-q").forEach(q=>q.addEventListener("click",()=>q.parentElement.classList.toggle("open")));
 document.getElementById("year").textContent=new Date().getFullYear();
 const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); } }), { threshold: .12 });
-document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 </script>
 </body>
 </html>

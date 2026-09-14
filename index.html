@@ -170,6 +170,11 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 .faq-item.open .faq-a { max-height: 220px; }
 .faq-item.open .faq-q i { transform: rotate(45deg); }
 
+/* GRID DE CIUDADES ITINERANTES */
+.cities-grid { display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: 850px; margin: 30px auto 0 auto; }
+.city-badge { padding: 18px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); text-align: center; font-weight: 700; color: var(--gold-light); transition: .3s; }
+.city-badge:hover { border-color: var(--gold); transform: translateY(-3px); background: var(--card2); }
+
 .location { display: grid; gap: 20px; text-align: left; }
 .location-panel { padding: 30px; border-radius: 28px; border: 1px solid var(--line); background: radial-gradient(circle at 90% 10%, rgba(197,160,89,.05), transparent 40%), var(--card); }
 .location-panel ul { padding: 0; list-style: none; color: var(--muted); }
@@ -182,7 +187,6 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 
 footer { border-top: 1px solid var(--line); padding: 28px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
 .footer-content { display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; }
-.footer-brand { color: var(--text); font-weight: 600; }
 
 .float-wa {
   position: fixed;
@@ -236,7 +240,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 60px; color: var(--m
 <header>
  <div class="container nav">
   <a class="brand" href="#"><img src="lododraalejandra.png" alt="Dra. Alejandra Zapata"></a>
-  <nav class="links" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#resultados">Resultados</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a></nav>
+  <nav class="links" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#resultados">Resultados</a><a href="#ciudades">Ciudades</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a></nav>
   <a class="btn btn-primary btn-small wa" href="#" data-msg="Hola Dra. Alejandra, quiero agendar una valoración para armonización de orejas.">Agendar cita</a>
  </div>
 </header>
@@ -319,6 +323,25 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 60px; color: var(--m
  </div>
 </section>
 
+<!-- SECCIÓN DE CIUDADES DE ATENCIÓN (ITINERANTE) -->
+<section id="ciudades">
+ <div class="container">
+  <div class="section-header-center">
+   <div class="eyebrow">Cobertura nacional</div>
+   <h2 class="section-title reveal">Ciudades de <span class="grad">Atención Presencial.</span></h2>
+   <p class="section-copy reveal">Atendemos mediante agendas programadas en diferentes ciudades. La dirección exacta y disponibilidad de cada sede se confirma directamente al agendar.</p>
+  </div>
+  <div class="cities-grid reveal">
+   <div class="city-badge">Palmira</div>
+   <div class="city-badge">Cali</div>
+   <div class="city-badge">Pereira</div>
+   <div class="city-badge">Bogotá</div>
+   <div class="city-badge">Medellín</div>
+   <div class="city-badge">Bucaramanga</div>
+  </div>
+ </div>
+</section>
+
 <section id="faq">
  <div class="container">
   <div class="section-header-center">
@@ -338,14 +361,14 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 60px; color: var(--m
 <section id="contacto">
  <div class="container location">
   <div class="location-panel reveal">
-   <div class="eyebrow">¿Dónde estamos?</div>
+   <div class="eyebrow">¿Dónde atendemos?</div>
    <h2 class="section-title" style="font-size:38px">Agenda tu valoración.</h2>
-   <p class="section-copy" style="margin-left:0; text-align:left;">Coordinamos los detalles de ubicación y disponibilidad directamente por WhatsApp para brindarte una atención personalizada.</p>
-   <ul><li>✦ Atención con cita previa</li><li>✦ Ubicación y horarios confirmados vía WhatsApp</li><li>✦ Consulta médica especializada</li></ul>
-   <a class="btn btn-primary wa" href="#" data-msg="Hola Dra. Alejandra, quiero conocer la ubicación y disponibilidad para agendar una valoración.">Consultar disponibilidad</a>
+   <p class="section-copy" style="margin-left:0; text-align:left;">Contamos con agendas presenciales en las principales ciudades del país. Escríbenos para conocer la próxima fecha disponible en tu ciudad.</p>
+   <ul><li>✦ Atención con cita previa por ciudades</li><li>✦ Direcciones de sedes confirmadas vía WhatsApp</li><li>✦ Consulta médica especializada</li></ul>
+   <a class="btn btn-primary wa" href="#" data-msg="Hola Dra. Alejandra, quiero conocer la disponibilidad y fechas para mi ciudad.">Consultar sedes y disponibilidad</a>
   </div>
   <div class="location-panel reveal" style="display:grid;place-items:center;min-height:300px;text-align:center">
-   <div><div style="font-size:48px;color:var(--gold)">⌖</div><h3 style="font-size:24px;margin-top:10px">Tu cita, sin complicaciones</h3><p style="color:var(--muted);max-width:400px;font-size:14px;margin:10px auto 0 auto;">Escríbenos por WhatsApp y recibe la información completa de ubicación y preparación para tu visita.</p></div>
+   <div><div style="font-size:48px;color:var(--gold)">⌖</div><h3 style="font-size:24px;margin-top:10px">Tu cita, sin complicaciones</h3><p style="color:var(--muted);max-width:400px;font-size:14px;margin:10px auto 0 auto;">Escríbenos por WhatsApp y recibe la información completa de fechas, ubicación y preparación para tu visita.</p></div>
   </div>
  </div>
 </section>

@@ -81,7 +81,7 @@ section{padding:72px 0}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.1
 
 footer{border-top:1px solid var(--line);padding:28px 0 80px;color:var(--muted);font-size:12px}.footer-grid{display:flex;flex-direction:column;gap:12px}
 
-/* Botón flotante WhatsApp sofisticado en tono dorado/nude armónico */
+/* Botón flotante WhatsApp */
 .float-wa{position:fixed;z-index:50;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#C5A059,#8C7C70);box-shadow:0 10px 30px rgba(197,160,89,.3);font-size:26px;color:#fff;animation:pulse 2.2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 10px 30px rgba(197,160,89,.2),0 0 0 0 rgba(197,160,89,.15)}50%{box-shadow:0 10px 30px rgba(197,160,89,.2),0 0 0 10px rgba(197,160,89,0)}}
 
@@ -235,7 +235,7 @@ function buildMsg(){
 document.getElementById("quoteBtn").addEventListener("click",()=>openWhatsApp(buildMsg()));
 document.querySelectorAll(".faq-q").forEach(q=>q.addEventListener("click",()=>q.parentElement.classList.toggle("open")));
 document.getElementById("year").textContent=new Date().getFullYear();
-const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");io.unobserve(e.target)}}),{threshold:.12});
+const io=new IntersectionObserver(entries=>entries.execute(e=>{if(e.isIntersecting){e.target.classList.add("show");io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 </script>
 </body>

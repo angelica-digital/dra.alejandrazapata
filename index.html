@@ -65,7 +65,6 @@ header {
   display: block; 
 }
 
-/* NAVEGACIÓN PC Y MÓVIL CON MENÚ HAMBURGUESA */
 .links { display: none; gap: 24px; align-items: center; font-size: 14px; color: var(--muted); }
 .links a:hover { color: var(--gold-light); }
 
@@ -89,7 +88,6 @@ header {
   transition: all 0.3s ease;
 }
 
-/* Menú móvil desplegable */
 .mobile-menu {
   position: absolute;
   top: 100%;
@@ -221,9 +219,10 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 .faq-item.open .faq-a { max-height: 220px; }
 .faq-item.open .faq-q i { transform: rotate(45deg); }
 
-.cities-grid { display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 850px; margin: 30px auto 0 auto; }
-.city-btn { padding: 18px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); text-align: center; font-weight: 700; color: var(--gold-light); cursor: pointer; transition: .3s; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; }
-.city-btn i { color: #25D366; font-size: 18px; }
+/* GRID DE CIUDADES EN 2 COLUMNAS COMPACTAS Y ELEGANTES */
+.cities-grid { display: grid; gap: 12px; grid-template-columns: repeat(2, 1fr); max-width: 650px; margin: 30px auto 0 auto; }
+.city-btn { padding: 15px 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); text-align: center; font-weight: 700; font-size: 14px; color: var(--gold-light); cursor: pointer; transition: .3s; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; }
+.city-btn i { color: #25D366; font-size: 16px; }
 .city-btn:hover { border-color: var(--gold); transform: translateY(-3px); background: var(--card2); filter: brightness(1.1); }
 
 .location { display: grid; gap: 20px; text-align: left; }
@@ -273,6 +272,7 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
   .gallery { grid-template-columns: repeat(3, 1fr); }
   .form-grid { grid-template-columns: 1fr 1fr; }
   .field.full { grid-column: 1 / -1; }
+  .cities-grid { grid-template-columns: repeat(3, 1fr); max-width: 850px; }
 }
 @media(min-width: 920px) {
   .hero { padding: 100px 0; }
@@ -313,7 +313,6 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
   </div>
  </div>
 
- <!-- Menú desplegable móvil -->
  <div class="mobile-menu" id="mobileMenu">
   <a href="#servicios" class="mobile-link">Servicios</a>
   <a href="#resultados" class="mobile-link">Resultados</a>
@@ -476,7 +475,6 @@ function openWhatsApp(message){
 }
 document.querySelectorAll(".wa").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();openWhatsApp(el.dataset.msg||"Hola, quiero más información.");}));
 
-// Script para el menú hamburguesa móvil
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
 menuToggle.addEventListener("click", () => {

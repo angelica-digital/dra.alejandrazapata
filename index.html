@@ -51,16 +51,16 @@ header {
   position: relative;
   width: 100%;
   z-index: 100;
-  padding: 22px 0;
+  padding: 24px 0;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .brand { display: flex; align-items: center; text-decoration: none; }
 .brand img { 
-  height: 85px; 
+  height: 110px; 
   width: auto; 
-  max-width: 320px;
+  max-width: 420px;
   object-fit: contain; 
   display: block; 
   transition: transform 0.3s ease;
@@ -224,7 +224,7 @@ footer { border-top: 1px solid var(--line); padding: 28px 0 80px; color: var(--m
   .location { grid-template-columns: 1fr 1fr; }
 }
 @media(max-width: 768px) {
-  .brand img { height: 52px; max-width: 180px; }
+  .brand img { height: 75px; max-width: 240px; }
 }
 @media(prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
@@ -378,7 +378,7 @@ function buildMsg(){
  preview.textContent=m;return m;
 }
 [objetivo,momento,detalle].forEach(x=>x.addEventListener("input",buildMsg));buildMsg();
-document.getElementById("quoteBtn").addEventListener("click",()=>openWhatsApp(buildMsg()));
+document.getElementById("quoteBtn").expanded=document.getElementById("quoteBtn").addEventListener("click",()=>openWhatsApp(buildMsg()));
 document.querySelectorAll(".faq-q").forEach(q=>q.addEventListener("click",()=>q.parentElement.classList.toggle("open")));
 document.getElementById("year").textContent=new Date().getFullYear();
 const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); } }), { threshold: .12 });

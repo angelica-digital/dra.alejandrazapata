@@ -51,24 +51,25 @@ header {
   position: relative;
   width: 100%;
   z-index: 100;
-  padding: 24px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
-.nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-.brand { display: flex; align-items: center; text-decoration: none; }
+.nav { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.brand { display: flex; align-items: center; text-decoration: none; justify-content: center; }
 .brand img { 
-  height: 110px; 
+  height: 70px; 
   width: auto; 
-  max-width: 420px;
+  max-width: 280px;
   object-fit: contain; 
   display: block; 
-  transition: transform 0.3s ease;
 }
-.brand img:hover { transform: scale(1.02); }
 
-.links { display: none; gap: 26px; align-items: center; font-size: 14px; color: var(--muted); }
+/* LINKS DE NAVEGACIÓN VISIBLES EN MÓVIL Y PC */
+.links { display: flex; gap: 16px; align-items: center; justify-content: center; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
 .links a:hover { color: var(--gold-light); }
+
+.header-cta { display: flex; width: 100%; justify-content: center; }
 
 .btn {
   display: inline-flex;
@@ -88,9 +89,9 @@ header {
 .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
 .btn-primary { background: linear-gradient(135deg, #B89753, #D4B26F); box-shadow: 0 10px 30px rgba(197,160,89,.2); color: #12100E; font-weight: 800; }
 .btn-secondary { border-color: var(--line); background: rgba(255,255,255,.03); color: var(--text); }
-.btn-small { min-height: 40px; padding: 0 16px; font-size: 13px; }
+.btn-small { min-height: 38px; padding: 0 16px; font-size: 12px; }
 
-.hero { padding: 60px 0; }
+.hero { padding: 40px 0 60px; }
 .hero-grid { display: grid; gap: 40px; align-items: center; }
 .badge {
   display: inline-flex;
@@ -168,7 +169,6 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 .faq-item.open .faq-a { max-height: 220px; }
 .faq-item.open .faq-q i { transform: rotate(45deg); }
 
-/* BOTONES DE CIUDADES CON ÍCONO DE WHATSAPP */
 .cities-grid { display: grid; gap: 15px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); max-width: 850px; margin: 30px auto 0 auto; }
 .city-btn { padding: 18px; border-radius: 16px; border: 1px solid var(--line); background: var(--card); text-align: center; font-weight: 700; color: var(--gold-light); cursor: pointer; transition: .3s; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; }
 .city-btn i { color: #25D366; font-size: 18px; }
@@ -184,7 +184,6 @@ section { padding: 70px 0; text-align: center; width: 100%; }
 .cta-box h2 { font-size: clamp(26px, 4.5vw, 44px); line-height: 1.2; }
 .cta-box p { color: var(--muted); max-width: 580px; margin: 16px auto 24px auto; }
 
-/* RODAPÉ CON LOGO MÁS GRANDE */
 footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--muted); font-size: 12px; text-align: center; }
 .footer-content { display: flex; flex-direction: column; gap: 14px; align-items: center; justify-content: center; }
 .footer-logo { height: 75px; width: auto; object-fit: contain; margin-bottom: 4px; }
@@ -214,6 +213,9 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
 .reveal.show { opacity: 1; transform: none; }
 
 @media(min-width: 680px) {
+  .nav { flex-direction: row; justify-content: space-between; }
+  .links { display: flex; gap: 22px; font-size: 14px; }
+  .header-cta { width: auto; }
   .actions { flex-direction: row; }
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
   .grid3 { grid-template-columns: repeat(3, 1fr); }
@@ -222,14 +224,13 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
   .field.full { grid-column: 1 / -1; }
 }
 @media(min-width: 920px) {
-  .links { display: flex; }
   .hero { padding: 100px 0; }
   .hero-grid { grid-template-columns: 1.15fr .85fr; }
   .quote-wrap { grid-template-columns: .8fr 1.2fr; }
   .location { grid-template-columns: 1fr 1fr; }
 }
 @media(max-width: 768px) {
-  .brand img { height: 75px; max-width: 240px; }
+  .brand img { height: 60px; }
   .footer-logo { height: 60px; }
 }
 @media(prefers-reduced-motion: reduce) {
@@ -243,7 +244,7 @@ footer { border-top: 1px solid var(--line); padding: 36px 0 60px; color: var(--m
  <div class="container nav">
   <a class="brand" href="#"><img src="lododraalejandra.png" alt="Dra. Alejandra Zapata"></a>
   <nav class="links" aria-label="Navegación principal"><a href="#servicios">Servicios</a><a href="#resultados">Resultados</a><a href="#ciudades">Ciudades</a><a href="#faq">FAQ</a><a href="#contacto">Contacto</a></nav>
-  <a class="btn btn-primary btn-small wa" href="#" data-msg="Hola Dra. Alejandra, quiero agendar una valoración para armonización de orejas.">Agendar cita</a>
+  <div class="header-cta"><a class="btn btn-primary btn-small wa" href="#" data-msg="Hola Dra. Alejandra, quiero agendar una valoración para armonización de orejas.">Agendar cita</a></div>
  </div>
 </header>
 
